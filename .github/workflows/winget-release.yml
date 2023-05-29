@@ -1,0 +1,24 @@
+name: Publish to WinGet
+on:
+  workflow_dispatch:
+    inputs:
+      VERSION:
+        description: "The release version of kbcli"
+        type: string
+        required: true
+        default: ''
+
+env:
+  GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: vedantmgoyal2009/winget-releaser@v2
+        with:
+          identifier: Apecloud.kbcli
+          version: ${{ inputs.VERSION }}
+          installers-regex: '\.exe$' # Only .exe files
+          max-versions-to-keep: 5
+          release-tag: ${{ inputs.VERSION }}
+          token: ${{ secrets.WINGET_TOKEN }}
