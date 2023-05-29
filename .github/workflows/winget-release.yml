@@ -23,6 +23,6 @@ jobs:
           installers-regex: '\.exe$' # Only .exe files
           max-versions-to-keep: 5
 #          release-tag: ${{ inputs.VERSION }}
-          release-repository: apecloud/kbcli
-          release-tag: 0.5.1
+          release-repository: kbcli
+          release-tag: v0.5.1
           token: ${{ env.GITHUB_TOKEN }}
