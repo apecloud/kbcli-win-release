@@ -18,7 +18,7 @@ jobs:
     steps:
       - uses: vedantmgoyal2009/winget-releaser@v2
         with:
-          identifier: Apecloud.kbcli
+          identifier: ApeCloud.kbcli
           version: ${{ inputs.VERSION }}
           installers-regex: '\.exe$' # Only .exe files
           max-versions-to-keep: 5
