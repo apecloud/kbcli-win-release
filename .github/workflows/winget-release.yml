@@ -1,5 +1,6 @@
 name: Publish to WinGet
 on:
+  push:
   workflow_dispatch:
     inputs:
       VERSION:
@@ -11,6 +12,7 @@ on:
 env:
   GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
+jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
@@ -20,5 +22,7 @@ env:
           version: ${{ inputs.VERSION }}
           installers-regex: '\.exe$' # Only .exe files
           max-versions-to-keep: 5
-          release-tag: ${{ inputs.VERSION }}
-          token: ${{ secrets.WINGET_TOKEN }}
+#          release-tag: ${{ inputs.VERSION }}
+          release-repository: apecloud/kbcli
+          release-tag: 0.5.1
+          token: ${{ env.GITHUB_TOKEN }}
