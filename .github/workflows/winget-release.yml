@@ -1,6 +1,5 @@
 name: Publish to WinGet
 on:
-  push:
   workflow_dispatch:
     inputs:
       VERSION:
@@ -22,7 +21,6 @@ jobs:
           version: ${{ inputs.VERSION }}
           installers-regex: '\.exe$' # Only .exe files
           max-versions-to-keep: 5
-#          release-tag: ${{ inputs.VERSION }}
+          release-tag: ${{ inputs.VERSION }}
           release-repository: kbcli
-          release-tag: v0.5.1
           token: ${{ env.GITHUB_TOKEN }}
