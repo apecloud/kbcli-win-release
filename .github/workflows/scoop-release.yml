@@ -39,6 +39,7 @@ jobs:
             fi
           done < <(git diff --name-only)
           git push
+
 #          cd scoop/bucket
 #          cp scoop/bucket scoop/bucket/old
 #          cat scoop/bucket/kbcli.json | jq '.version="${{ inputs.VERSION }}"'
