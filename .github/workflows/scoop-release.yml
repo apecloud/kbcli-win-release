@@ -8,7 +8,6 @@ on:
         type: string
         required: true
         default: ''
-
 env:
   GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
@@ -21,14 +20,13 @@ jobs:
           repository: apecloud/scoop-bucket
           path: scoop
           token: ${{ env.GITHUB_TOKEN }}
-      - name: cd the scoop
-        run: |
-          cd scoop
       - name: run autoupdate
         uses: foosel/scoop-checkver-action@main
-        with: bucket
+        with:
+          bucket: scoop/bucket
       - name: auto update scoop-bucket
         run: | 
+          git add .
           git commit -m "Updated apps"
           git push
 #          cd scoop/bucket
