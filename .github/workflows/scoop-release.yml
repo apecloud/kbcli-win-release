@@ -14,17 +14,21 @@ env:
 
 jobs:
   publish:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
         with:
           repository: apecloud/scoop-bucket
           path: scoop
           token: ${{ env.GITHUB_TOKEN }}
-      - name: auto update scoop-bucket
+      - name: cd the scoop
         run: |
           cd scoop
-          .\bin\checkver * -u 
+      - name: run autoupdate
+        uses: foosel/scoop-checkver-action@main
+        with: bucket
+      - name: auto update scoop-bucket
+        run: | 
           git commit -m "Updated apps"
           git push
 #          cd scoop/bucket
