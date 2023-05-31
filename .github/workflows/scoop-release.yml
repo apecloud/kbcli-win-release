@@ -26,6 +26,7 @@ jobs:
           bucket: scoop/bucket
       - name: auto update scoop-bucket
         run: | 
+          cd scoop
           git add .
           git commit -m "Updated apps"
           git push
