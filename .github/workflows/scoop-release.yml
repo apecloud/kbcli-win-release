@@ -1,0 +1,27 @@
+name: Publish to scoop bucket
+on:
+  workflow_dispatch:
+    inputs:
+      VERSION:
+        description: "The release version of kbcli"
+        type: string
+        required: true
+        default: ''
+
+env:
+  GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          repository: apecloud/kbcli-bucket
+          path: scoop
+          token: ${{ env.GITHUB_TOKEN }}
+      - name: fix the bucket
+        run: |
+#          cd scoop/bucket
+#          cp scoop/bucket scoop/bucket/old
+#          cat scoop/bucket/kbcli.json | jq '.version="${{ inputs.VERSION }}"'

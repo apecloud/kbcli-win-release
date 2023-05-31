@@ -1,0 +1,8 @@
+# editor and IDE paraphernalia
+.vscode/
+.idea/
+.history/
+.vimrc
+*.swp
+*.swo
+*~
